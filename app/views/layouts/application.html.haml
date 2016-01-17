@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MyRecipe
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header.navbar.navbar-fixed-top.navbar-default
+      .container
+        = link_to("myRecipes", root_path, class: "btn btn-info", id: 'logo')
+        .nav_item
+          = link_to("link1", "", class: "btn btn-default btn-warning")
+        .nav_item
+          = link_to("link1", "", class: "btn btn-default btn-warning")
+        .nav_item
+          = link_to("link1", "", class: "btn btn-default btn-warning")
+
+  .container
+    = yield
+
+    .footer
+      %p &copy; My Recipe 2016
