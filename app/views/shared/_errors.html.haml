@@ -1,0 +1,7 @@
+- if obj.errors.any?
+  .row
+    .alert.alert-danger.col-xs-8.col-xs-offset-2
+      %h5 Please correct the following errors
+      %ul
+        - obj.errors.full_messages.each do |msg|
+          %li= msg

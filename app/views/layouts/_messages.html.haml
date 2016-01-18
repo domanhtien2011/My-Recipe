@@ -1,0 +1,6 @@
+.row
+  .col-xs-10
+    - flash.each do |message_type, message|
+      %div{:class => "alert alert-#{message_type}"}
+        = message
+        %a.close{"data-dismiss" => "alert"} ×

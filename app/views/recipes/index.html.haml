@@ -1,0 +1,21 @@
+= render 'shared/page_title', title: "All Recipes"
+
+- @recipes.each do |recipe|
+  .row
+
+    .col-xs-2
+      %section.chef-info
+        = gravatar_for recipe.chef, size: 100
+        %h5
+          Chef name: #{recipe.chef.chefname}
+    .col-xs-8.well
+      %h4= link_to recipe.name, recipe
+      %p= recipe.summary
+      %p
+        %span.quiet
+          %small
+            = time_ago_in_words(recipe.created_at) |
+            ago
+  %hr/
+
+
