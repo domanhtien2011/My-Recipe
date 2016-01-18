@@ -87,16 +87,28 @@ hr {
 }
 
 .well {
-  background-color: #ededed;
+    background-color: #ededed;
 }
 
 input, textarea, select, .undeditable-input {
-  border: 1px solid #d2d2d2;
-  border-radius: 5px;
-  width: 100%;
-  margin-bottom: 15px;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 input {
-  height: auto, !important;
+    height: auto, !important;
+}
+
+span.picture {
+    margin-top: 10px;
+
+    input {
+        border: 0;
+    }
+}
+
+.show_recipe {
+    margin: 10px 10px 10px 10px;
 }
