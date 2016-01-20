@@ -2,7 +2,6 @@
 = will_paginate
 - @recipes.each do |recipe|
   .row
-
     .col-xs-2
       %section.chef-info
         = gravatar_for recipe.chef, size: 100
@@ -14,8 +13,12 @@
       %p
         %span.quiet
           %small
-            = time_ago_in_words(recipe.created_at) |
+            created: #{time_ago_in_words(recipe.created_at)} |
+            ago,
+          %small
+            updated #{ time_ago_in_words(recipe.updated_at)} |
             ago
+
       .pull-right
         = link_to like_recipe_url(recipe, like: true), method: :post do
           %i.glyphicon.glyphicon-thumbs-up &nbsp #{recipe.thumbs_up_total}

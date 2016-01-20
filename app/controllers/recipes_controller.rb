@@ -38,13 +38,13 @@ class RecipesController < ApplicationController
 
   def like
     Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
-    if like.valid?
-      flash[:success] = "Your voting was successful"
-      redirect_to(:back)
-    else
-      flash[:warning] = "You can only like/dislike a recipe once"
-      redirect_to(:back)
-    end
+    # if like.valid?
+    #   flash[:success] = "Your voting was successful"
+    #   redirect_to(:back)
+    # else
+    #   flash[:warning] = "You can only like/dislike a recipe once"
+    #   redirect_to(:back)
+    # end
   end
 
   private
