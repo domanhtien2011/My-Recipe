@@ -1,0 +1,11 @@
+= render 'shared/page_title', title: "All Chefs"
+.row
+  .col-xs-4.col-xs-offset-4.text-center
+    = will_paginate
+
+- @chefs.each do |chef|
+  .row
+    .col-xs-4.col-xs-offset-4.text-center
+      = link_to gravatar_for(chef, size: 200), chef_path(chef)
+      %p
+        %h5 Chef name: #{chef.chefname}
