@@ -1,5 +1,5 @@
 = render 'shared/page_title', title: "All Recipes"
-
+= will_paginate
 - @recipes.each do |recipe|
   .row
 
@@ -16,8 +16,15 @@
           %small
             = time_ago_in_words(recipe.created_at) |
             ago
+      .pull-right
+        = link_to like_recipe_url(recipe, like: true), method: :post do
+          %i.glyphicon.glyphicon-thumbs-up &nbsp #{recipe.thumbs_up_total}
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        = link_to like_recipe_url(recipe, like: false), method: :post do
+          %i.glyphicon.glyphicon-thumbs-down &nbsp #{recipe.thumbs_down_total}
+
     .col-xs-4
       = image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture?
   %hr/
 
-
+= will_paginate

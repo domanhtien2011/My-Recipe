@@ -14,5 +14,12 @@
       %p
         %strong Steps:
       = simple_format(@recipe.description)
+      .pull-right
+        = link_to like_recipe_url(@recipe, like: true), method: :post do
+          %i.glyphicon.glyphicon-thumbs-up &nbsp #{@recipe.thumbs_up_total}
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        = link_to like_recipe_url(@recipe, like: false), method: :post do
+          %i.glyphicon.glyphicon-thumbs-down &nbsp #{@recipe.thumbs_down_total}
+
 
 = link_to 'Return to Recipes Listing', recipes_path, class: "btn btn-warning btn-sm"
