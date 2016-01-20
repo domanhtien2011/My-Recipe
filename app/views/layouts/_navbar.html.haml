@@ -17,13 +17,13 @@
             %li.divider
             %li
               = link_to 'Logout', logout_path
-      .nav_item
-        = link_to("All Chefs", chefs_path, class: "btn btn-default btn-warning")
-      .nav_item
-        = link_to("All Recipes", recipes_path, class: "btn btn-default btn-warning")
     - else
       .nav_item
         = link_to("Log in", login_path, class: "btn btn-default btn-success")
+    .nav_item
+      = link_to("All Chefs", chefs_path, class: "btn btn-default btn-warning")
+    .nav_item
+      = link_to("All Recipes", recipes_path, class: "btn btn-default btn-warning")
 
 
 
