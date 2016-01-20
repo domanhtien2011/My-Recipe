@@ -1,9 +1,30 @@
 %header.navbar.navbar-fixed-top.navbar-default
   .container
     = link_to("myRecipes", root_path, class: "btn btn-info", id: 'logo')
-    .nav_item
-      = link_to("Create New Recipe", new_recipe_path, class: "btn btn-default btn-warning")
-    .nav_item
-      = link_to("All Chefs", chefs_path, class: "btn btn-default btn-warning")
-    .nav_item
-      = link_to("All Recipes", recipes_path, class: "btn btn-default btn-warning")
+    - if logged_in?
+      .nav_item
+        = link_to("Create New Recipe", new_recipe_path, class: "btn btn-default btn-warning")
+      %ul.nav_item
+        %li.drop-down
+          = link_to '' , class: 'btn btn-default btn-warning dropdown-toggle', 'data-toggle' => 'dropdown' do
+            = current_user.chefname
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "View Profile", chef_path(current_user)
+            %li
+              = link_to "Edit Profile",edit_chef_url(current_user)
+            %li.divider
+            %li
+              = link_to 'Logout', logout_path
+      .nav_item
+        = link_to("All Chefs", chefs_path, class: "btn btn-default btn-warning")
+      .nav_item
+        = link_to("All Recipes", recipes_path, class: "btn btn-default btn-warning")
+    - else
+      .nav_item
+        = link_to("Log in", login_path, class: "btn btn-default btn-success")
+
+
+
+
