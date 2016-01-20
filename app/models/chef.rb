@@ -1,4 +1,5 @@
 class Chef < ActiveRecord::Base
+  has_secure_password
   has_many :likes
   before_save { self.email = self.email.downcase }
   validates :chefname, presence: true, length: { minimum: 3, maximum: 40 }
