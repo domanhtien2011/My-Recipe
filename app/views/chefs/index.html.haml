@@ -1,4 +1,10 @@
 = render 'shared/page_title', title: "All Chefs"
+%ul.nav.nav-tabs
+  %li
+    = link_to "Recipes", recipes_url
+  %li.active
+    = link_to "Chefs", chefs_path
+
 .row
   .col-xs-4.col-xs-offset-4.text-center
     = will_paginate

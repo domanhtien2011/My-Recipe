@@ -1,4 +1,11 @@
 = render 'shared/page_title', title: "All Recipes"
+%ul.nav.nav-tabs
+  %li.active
+    = link_to "Recipes", recipes_url
+  %li
+    = link_to "Chefs", chefs_path
+
+
 = will_paginate
 - @recipes.each do |recipe|
   .row
