@@ -5,8 +5,10 @@
       %h5
         Brought to you by: #{@recipe.chef.chefname}
   .col-xs-8
-    - if logged_in? && @recipe.chef == current_user
+    - if logged_in? && (@recipe.chef == current_user || current_user.admin?)
       = link_to("Edit Recipe", edit_recipe_url(@recipe), class: "btn btn-info btn-sm pull-right" )
+    - if current_user.admin?
+      = link_to "Delete Recipe", @recipe, method: :delete, data: { confirm: "Are you sure?" }
     %h3= @recipe.summary
     .show_recipe
       = image_tag(@recipe.picture.url, size: "150x150") if @recipe.picture?
