@@ -17,10 +17,12 @@
     .col-xs-6.well
       %h4= link_to recipe.name, recipe
       %p= recipe.summary
-      %p
-        Styles: #{render recipe.styles}
-      %p
-        Ingredients: #{render recipe.ingredients}
+      - if recipe.styles.any?
+        %p
+          Styles: #{render recipe.styles}
+      - if recipe.ingredients.any?
+        %p
+          Ingredients: #{render recipe.ingredients}
       %p
         %span.quiet
           %small

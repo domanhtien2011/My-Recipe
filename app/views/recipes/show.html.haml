@@ -11,10 +11,12 @@
     .show_recipe
       = image_tag(@recipe.picture.url, size: "150x150") if @recipe.picture?
     .well
-      %p
-        Styles: #{render @recipe.styles}
-      %p
-        Ingredients: #{render @recipe.ingredients}
+      - if @recipe.styles.any?
+        %p
+          Styles: #{render @recipe.styles}
+      - if @recipe.ingredients.any?
+        %p
+          Ingredients: #{render @recipe.ingredients}
       %p
         %strong Steps:
       = simple_format(@recipe.description)
