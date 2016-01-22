@@ -1,4 +1,4 @@
-= render 'shared/page_title', title: "All Recipes"
+= render 'shared/page_title', title: "Recipes for : " + @style.name + " food"
 %ul.nav.nav-tabs
   %li.active
     = link_to "Recipes", recipes_url
@@ -6,8 +6,9 @@
     = link_to "Chefs", chefs_path
 
 
-= will_paginate
-- @recipes.each do |recipe|
+= will_paginate @recipes
+
+- @style.recipes.each do |recipe|
   .row
     .col-xs-2
       %section.chef-info
@@ -41,4 +42,4 @@
       = image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture?
   %hr/
 
-= will_paginate
+= will_paginate @recipes

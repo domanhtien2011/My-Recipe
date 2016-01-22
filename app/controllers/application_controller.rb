@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:danger] = 'You must log in to perfor this action'
-      redirect_to :back
+      redirect_to recipes_path
     end
   end
 end

@@ -1,0 +1,8 @@
+= render  "shared/errors", obj: @style
+.row
+  .well.col-xs-8.col-xs-offset-2
+    = form_for @style do |f|
+      = f.label :name
+      = f.text_field :name
+
+      = f.submit 'Create Style', class: "btn btn-success"

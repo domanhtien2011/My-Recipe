@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :like]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :like]
+  before_action :require_user_like, only: [:like]
   before_action :require_same_user, only:[:edit, :update]
 
   def index
@@ -41,13 +42,13 @@ class RecipesController < ApplicationController
 
   def like
     Like.create(like: params[:like], chef: current_user, recipe: @recipe)
-    # if like.valid?
-    #   flash[:success] = "Your voting was successful"
-    #   redirect_to(:back)
-    # else
-    #   flash[:warning] = "You can only like/dislike a recipe once"
-    #   redirect_to(:back)
-    # end
+    if like.valid?
+      flash[:success] = "Your voting was successful"
+      redirect_to(:back)
+    else
+      flash[:warning] = "You can only like/dislike a recipe once"
+      redirect_to(:back)
+    end
   end
 
   private
@@ -57,7 +58,7 @@ class RecipesController < ApplicationController
   end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :summary, :description, :picture)
+      params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredient_ids: [])
     end
 
     def require_same_user
@@ -66,4 +67,11 @@ class RecipesController < ApplicationController
         redirect_to(recipes_path)
       end
     end
+
+  def require_user_like
+    if !logged_in?
+      flash[:danger] = 'You must log in to perfor this action'
+      redirect_to :back
+    end
+  end
 end

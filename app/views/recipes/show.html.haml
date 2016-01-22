@@ -12,6 +12,10 @@
       = image_tag(@recipe.picture.url, size: "150x150") if @recipe.picture?
     .well
       %p
+        Styles: #{render @recipe.styles}
+      %p
+        Ingredients: #{render @recipe.ingredients}
+      %p
         %strong Steps:
       = simple_format(@recipe.description)
       .pull-right
